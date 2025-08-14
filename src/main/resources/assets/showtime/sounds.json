@@ -1,0 +1,20 @@
+{
+  "ball_detonate": {
+    "subtitle": "sound.showtime.ball_detonate",
+    "sounds": [
+      "showtime:ball_detonate"
+    ]
+  },
+  "staff_recharge": {
+    "subtitle": "sound.showtime.staff_recharge",
+    "sounds": [
+      "showtime:staff_recharge"
+    ]
+  },
+  "ball_throw": {
+    "subtitle": "sound.showtime.ball_throw",
+    "sounds": [
+      "showtime:ball_throw"
+    ]
+  }
+}

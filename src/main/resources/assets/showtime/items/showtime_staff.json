@@ -72,6 +72,6 @@
       "model": "showtime:item/showtime_staff_hand"
     }
   },
-  "hand_animation_on_swap": false,
+  "hand_animation_on_swap": true,
   "oversized_in_gui": false
 }

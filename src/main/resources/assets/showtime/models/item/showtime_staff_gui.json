@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:item/handheld",
 	"textures": {
-		"0": "showtime_staff_inventory",
-		"particle": "showtime_staff_inventory"
+		"layer0": "showtime:item/showtime_staff_inventory",
+		"particle": "showtime:item/showtime_staff_inventory"
 	},
 	"display": {
 		"firstperson_lefthand": {

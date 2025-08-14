@@ -9,6 +9,7 @@
   "license": "All-Rights-Reserved",
   "icon": "assets/showtime/icon.png",
   "environment": "*",
+  "accessWidener" : "showtime.accesswidener",
   "entrypoints": {
     "fabric-datagen": [
       "io.github.bigcrazyofficial.showtime.client.ShowtimeDataGenerator"
