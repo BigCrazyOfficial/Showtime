@@ -1,6 +1,5 @@
 package io.github.bigcrazyofficial.showtime.client.particle;
 
-import io.github.bigcrazyofficial.showtime.Showtime;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
@@ -32,10 +31,10 @@ public class ConfettiParticle extends SpriteBillboardParticle {
         this.red = world.getRandom().nextFloat();
         this.blue = world.getRandom().nextFloat();
         this.green = world.getRandom().nextFloat();
-        this.scale *= 0.65F + (world.getRandom().nextFloat() / 10);
+        this.scale *= 0.55F + (world.getRandom().nextFloat() / 10);
         this.maxAge = 1000 + (world.getRandom().nextBetween(0, 60) * 5);
-        this.gravityStrength = 0.035f + (world.getRandom().nextFloat() / 4);
-        this.velocityMultiplier = 0.99f;
+        this.gravityStrength = 0.1f + (world.getRandom().nextFloat() / 3);
+        this.velocityMultiplier = 1.8f;
         this.setSprite(spriteProvider);
 
         this.rotationX = world.getRandom().nextFloat() * 360f;
@@ -125,7 +124,7 @@ public class ConfettiParticle extends SpriteBillboardParticle {
                 if (this.world.getFluidState(BlockPos.ofFloored(this.x, (this.y - 0.01), this.z)).isIn(FluidTags.WATER)) {
                     this.markDead();
                 } else {
-                    this.velocityY -= 0.04d * (double) this.gravityStrength;
+                    this.velocityY -= 0.06d * (double) this.gravityStrength;
                     this.move(this.velocityX, this.velocityY, this.velocityZ);
                     if (this.ascending && this.y == this.lastY) {
                         this.velocityX *= 1.1d;
@@ -134,8 +133,10 @@ public class ConfettiParticle extends SpriteBillboardParticle {
                     this.velocityX *= this.velocityMultiplier;
                     this.velocityY *= this.velocityMultiplier;
                     this.velocityZ *= this.velocityMultiplier;
+
+                    this.velocityMultiplier = Math.min(0.98f, this.velocityMultiplier * 1.15f);
+
                     if((double) this.maxAge / this.age <= 1.1){
-                        Showtime.LOGGER.info(String.valueOf(this.maxAge / this.age));
                         this.setAlpha(this.alpha -= 0.03f);
                         if(this.alpha <= 0){
                             this.setAlpha(0);
@@ -149,10 +150,10 @@ public class ConfettiParticle extends SpriteBillboardParticle {
     }
 
     @Environment(EnvType.CLIENT)
-    public static class DefaultFactory implements ParticleFactory<SimpleParticleType> {
+    public static class Factory implements ParticleFactory<SimpleParticleType> {
         private final SpriteProvider spriteProvider;
 
-        public DefaultFactory(SpriteProvider spriteProvider) {
+        public Factory(SpriteProvider spriteProvider) {
             this.spriteProvider = spriteProvider;
         }
 

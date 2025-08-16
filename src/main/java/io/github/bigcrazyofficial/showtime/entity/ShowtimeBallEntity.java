@@ -1,6 +1,8 @@
 package io.github.bigcrazyofficial.showtime.entity;
 
+import io.github.bigcrazyofficial.showtime.Showtime;
 import io.github.bigcrazyofficial.showtime.util.Sounds;
+import io.github.bigcrazyofficial.showtime.util.UnjustifiablyObtuseParticleHelper;
 import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -47,15 +49,19 @@ public class ShowtimeBallEntity extends AbstractWindChargeEntity {
         }
     }
 
+
     @Override
     protected void createExplosion(Vec3d pos) {
-        this.getWorld().createExplosion(this, (DamageSource)null, EXPLOSION_BEHAVIOR, pos.getX(), pos.getY(), pos.getZ(), 1.6F, false, World.ExplosionSourceType.TRIGGER, ParticleTypes.FLASH, ParticleTypes.GUST_EMITTER_SMALL, Sounds.BALL_DETONATE);
+        this.getWorld().createExplosion(this, null, EXPLOSION_BEHAVIOR, pos.getX(), pos.getY(), pos.getZ(), 1.6F, false, World.ExplosionSourceType.TRIGGER, UnjustifiablyObtuseParticleHelper.CONFETTI_EMITTER, ParticleTypes.FLASH, Sounds.BALL_DETONATE);
+        Showtime.LOGGER.info("BAAH!");
     }
 
-    /*@Override
+    @Override
     public boolean deflect(ProjectileDeflection deflection, @Nullable Entity deflector, @Nullable Entity owner, boolean fromAttack) {
         return this.deflectCooldown <= 0 && super.deflect(deflection, deflector, owner, fromAttack);
-    }*/
+    }
+
+
 
     protected double getGravity() { return 0.055; }
 
@@ -69,7 +75,7 @@ public class ShowtimeBallEntity extends AbstractWindChargeEntity {
     @Nullable
     @Override
     protected ParticleEffect getParticleType() {
-        return ParticleTypes.FIREWORK;
+        return UnjustifiablyObtuseParticleHelper.CONFETTI;
     }
 
     static {
