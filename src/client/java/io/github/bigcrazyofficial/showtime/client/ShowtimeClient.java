@@ -16,11 +16,13 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ShowtimeClient implements ClientModInitializer {
+    public static SimpleParticleType CONFETTI;
 
     @Override
     public void onInitializeClient() {
         EntityModelLayerRegistry.registerModelLayer(ShowtimeBallModel.BALL, ShowtimeBallModel::getTexturedModelData);
         EntityRendererRegistry.register(ModEntities.SHOWTIME_BALL, ShowtimeBallRenderer::new);
+
 
         SimpleParticleType CONFETTI = Registry.register(Registries.PARTICLE_TYPE, Identifier.of(Showtime.MOD_ID, "confetti"), FabricParticleTypes.simple(true));
         ParticleFactoryRegistry.getInstance().register(CONFETTI, ConfettiParticle.DefaultFactory::new);

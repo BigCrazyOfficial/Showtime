@@ -35,10 +35,10 @@ public class ShowtimeBallEntity extends AbstractWindChargeEntity {
         super(ModEntities.SHOWTIME_BALL, world, player, x, y, z);
     }
 
+    @Override
     public void tick() {
         super.tick();
         this.applyGravity();
-        this.applyDrag();
         if (!this.getWorld().isClient){
             ProjectileUtil.setRotationFromVelocity(this, 0.2F);
         }
@@ -47,16 +47,17 @@ public class ShowtimeBallEntity extends AbstractWindChargeEntity {
         }
     }
 
+    @Override
     protected void createExplosion(Vec3d pos) {
         this.getWorld().createExplosion(this, (DamageSource)null, EXPLOSION_BEHAVIOR, pos.getX(), pos.getY(), pos.getZ(), 1.6F, false, World.ExplosionSourceType.TRIGGER, ParticleTypes.FLASH, ParticleTypes.GUST_EMITTER_SMALL, Sounds.BALL_DETONATE);
     }
 
-    @Override
+    /*@Override
     public boolean deflect(ProjectileDeflection deflection, @Nullable Entity deflector, @Nullable Entity owner, boolean fromAttack) {
         return this.deflectCooldown <= 0 && super.deflect(deflection, deflector, owner, fromAttack);
-    }
+    }*/
 
-    protected double getGravity() { return 0.06; }
+    protected double getGravity() { return 0.055; }
 
     @Override
     public DoubleDoubleImmutablePair getKnockback(LivingEntity target, DamageSource source) {
@@ -72,6 +73,6 @@ public class ShowtimeBallEntity extends AbstractWindChargeEntity {
     }
 
     static {
-        EXPLOSION_BEHAVIOR = new AdvancedExplosionBehavior(true, false, Optional.of(1.6F), Registries.BLOCK.getOptional(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity()));
+        EXPLOSION_BEHAVIOR = new AdvancedExplosionBehavior(true, false, Optional.of(1.4F), Registries.BLOCK.getOptional(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity()));
     }
 }

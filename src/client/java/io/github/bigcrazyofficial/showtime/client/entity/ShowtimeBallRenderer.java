@@ -29,6 +29,7 @@ public class ShowtimeBallRenderer extends EntityRenderer<ShowtimeBallEntity, Pro
                        int light) {
         matrices.push();
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(this.model.getLayer(TEXTURE));
+        matrices.translate(0f, 0.2f, 0f);
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(state.age, state.yaw, state.yaw + 8 )));
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MathHelper.lerp(state.age, state.pitch, state.pitch + 8 )));
         matrices.scale(0.75f, 0.75f, 0.75f);

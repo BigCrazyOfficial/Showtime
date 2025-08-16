@@ -58,7 +58,7 @@ public class ShowtimeStaffItem extends Item {
         if (charges > 0) {
             if (world instanceof ServerWorld serverWorld) {
                 ShowtimeBallEntity ball = new ShowtimeBallEntity(serverWorld, user, user.getX(), user.getEyeY(), user.getZ());
-                ball.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.1f, 0f);
+                ball.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.05f, 0f);
                 world.spawnEntity(ball);
             }
             world.playSound(null, user.getBlockPos(), Sounds.BALL_THROW, SoundCategory.PLAYERS, 1, 1);

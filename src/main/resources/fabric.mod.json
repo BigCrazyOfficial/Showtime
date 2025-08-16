@@ -3,13 +3,12 @@
   "id": "showtime",
   "version": "${version}",
   "name": "Showtime",
-  "description": "comm for Deity <3",
+  "description": "Made for Modfest: Toybox",
   "authors": [],
   "contact": {},
-  "license": "All-Rights-Reserved",
+  "license": "MIT",
   "icon": "assets/showtime/icon.png",
   "environment": "*",
-  "accessWidener" : "showtime.accesswidener",
   "entrypoints": {
     "fabric-datagen": [
       "io.github.bigcrazyofficial.showtime.client.ShowtimeDataGenerator"
