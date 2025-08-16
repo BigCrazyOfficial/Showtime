@@ -11,6 +11,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.Unit;
 
 import java.util.function.Function;
@@ -27,6 +28,7 @@ public class ModItems {
                     .component(DataComponentTypes.USE_COOLDOWN, new UseCooldownComponent(0.25f))
                     .component(ComponentTypes.BALL_CHARGES, 0)
                     .component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE)
+                    .rarity(Rarity.EPIC)
                     .sword(ToolMaterial.GOLD, 0.0f, -2.4f));
 
 

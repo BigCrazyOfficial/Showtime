@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " #g",
+        " BL",
+        "g  "
+    ],
+    "key": {
+        "#": "minecraft:red_dye",
+        "g": "minecraft:gold_ingot",
+        "B": "minecraft:breeze_rod",
+        "L": "minecraft:blue_dye"
+    },
+    "result": {
+        "id": "showtime:showtime_staff",
+        "count": 1
+    }
+}

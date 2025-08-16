@@ -1,5 +1,7 @@
 package io.github.bigcrazyofficial.showtime.client.particle;
 
+import io.github.bigcrazyofficial.showtime.Showtime;
+import io.github.bigcrazyofficial.showtime.client.mixin.ParticleMixin;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
@@ -78,7 +80,6 @@ public class ConfettiParticle extends SpriteBillboardParticle {
         Vector3f[] vec3f = new Vector3f[]{new Vector3f(-1, -1, 0), new Vector3f(-1, 1, 0), new Vector3f(1, 1, 0), new Vector3f(1, -1, 0)};
         float size = this.scale;
         float offsetY;
-
         if(this.onGround){
             rotationY = 0;
             rotationX = 90f;
@@ -89,7 +90,7 @@ public class ConfettiParticle extends SpriteBillboardParticle {
             rotationZ += rotationSpeedZ;
             offsetY = 0f;
         }
-        for (int k = 0; k < 4; ++k) {
+        for(int k = 0; k < 4; ++k) {
             Vector3f vec3f2 = vec3f[k];
             vec3f2.rotate(manifestQuaternion(rotationX, rotationY, rotationZ));
             vec3f2.normalize(size);
@@ -117,18 +118,17 @@ public class ConfettiParticle extends SpriteBillboardParticle {
         this.lastX = this.x;
         this.lastY = this.y;
         this.lastZ = this.z;
-        if (this.age++ >= this.maxAge || this.alpha <= 0) {
+        if(this.age++ >= this.maxAge || this.alpha <= 0) {
             this.markDead();
         } else {
-            if (this.world.getFluidState(BlockPos.ofFloored(this.x, (this.y + 0.2), this.z)).isEmpty()) {
-                if (this.world.getFluidState(BlockPos.ofFloored(this.x, (this.y - 0.01), this.z)).isIn(FluidTags.WATER)) {
+            if(this.world.getFluidState(BlockPos.ofFloored(this.x, (this.y + 0.2), this.z)).isEmpty()) {
+                if(this.world.getFluidState(BlockPos.ofFloored(this.x, (this.y - 0.01), this.z)).isIn(FluidTags.WATER)) {
                     this.markDead();
                 } else {
                     this.velocityY -= 0.06d * (double) this.gravityStrength;
                     this.move(this.velocityX, this.velocityY, this.velocityZ);
-                    if (this.ascending && this.y == this.lastY) {
-                        this.velocityX *= 1.1d;
-                        this.velocityZ *= 1.1d;
+                    if(this.y == this.lastY && !this.onGround) {
+                        ((ParticleMixin) this).setStopped(false);
                     }
                     this.velocityX *= this.velocityMultiplier;
                     this.velocityY *= this.velocityMultiplier;
