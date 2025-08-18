@@ -25,7 +25,7 @@ public class ShowtimeStaffItem extends Item {
 
     @Override
     public boolean isItemBarVisible(ItemStack stack) {
-        return true;
+        return stack.get(ComponentTypes.BALL_CHARGES) < 4;
     }
 
     @Override
@@ -62,7 +62,9 @@ public class ShowtimeStaffItem extends Item {
                 world.spawnEntity(ball);
             }
             world.playSound(null, user.getBlockPos(), Sounds.BALL_THROW, SoundCategory.PLAYERS, 1, 1);
-            stack.set(ComponentTypes.BALL_CHARGES, charges - 1);
+            if(!user.isInCreativeMode()) {
+                stack.set(ComponentTypes.BALL_CHARGES, charges - 1);
+            }
             RECHARGE_TIMER = 30;
             user.incrementStat(Stats.USED.getOrCreateStat(this));
             return ActionResult.SUCCESS;

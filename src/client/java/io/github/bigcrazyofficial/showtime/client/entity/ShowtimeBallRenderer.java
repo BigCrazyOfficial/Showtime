@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 
+
 public class ShowtimeBallRenderer extends EntityRenderer<ShowtimeBallEntity, ProjectileEntityRenderState> {
     private static final Identifier TEXTURE = Identifier.of(Showtime.MOD_ID,"textures/entity/showtime_ball.png");
     private final ShowtimeBallModel model;
@@ -30,8 +31,8 @@ public class ShowtimeBallRenderer extends EntityRenderer<ShowtimeBallEntity, Pro
         matrices.push();
         VertexConsumer vertexConsumer = vertexConsumers.getBuffer(this.model.getLayer(TEXTURE));
         matrices.translate(0f, 0.2f, 0f);
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(state.age, state.yaw, state.yaw + 8 )));
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MathHelper.lerp(state.age, state.pitch, state.pitch + 8 )));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(state.age, state.yaw, state.yaw + 8)));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MathHelper.lerp(state.age, state.pitch, state.pitch + 8)));
         matrices.scale(0.75f, 0.75f, 0.75f);
         this.model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV);
         matrices.pop();

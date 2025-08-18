@@ -1,5 +1,6 @@
 {
   "item.showtime.showtime_staff": "Showtime Staff",
+  "itemGroup.showtime": "Showtime",
 
   "sound.showtime.ball_detonate": "Ball detonates",
   "sound.showtime.ball_throw": "Ball flies",
