@@ -31,6 +31,7 @@ public class ModItems {
             new Item.Settings()
                     .component(DataComponentTypes.USE_COOLDOWN, new UseCooldownComponent(0.25f))
                     .component(ComponentTypes.BALL_CHARGES, 4)
+                    .component(ComponentTypes.RECHARGE_TIMER, 0)
                     .component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE)
                     .rarity(Rarity.EPIC)
                     .sword(ToolMaterial.GOLD, 0.0f, -2.4f));

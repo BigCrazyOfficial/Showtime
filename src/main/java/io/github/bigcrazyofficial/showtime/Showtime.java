@@ -29,6 +29,7 @@ public class Showtime implements ModInitializer {
         ItemGroupEvents.modifyEntriesEvent(ModItems.GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.SHOWTIME_STAFF);
         });
+
         Showtime.LOGGER.info("yaaay");
 
     }

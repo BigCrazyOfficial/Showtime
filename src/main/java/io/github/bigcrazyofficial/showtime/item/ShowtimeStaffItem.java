@@ -18,9 +18,13 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class ShowtimeStaffItem extends Item {
-    public int RECHARGE_TIMER = 20;
     public ShowtimeStaffItem(Settings settings) {
         super(settings);
+    }
+
+    @Override
+    public boolean allowComponentsUpdateAnimation(PlayerEntity player, Hand hand, ItemStack oldStack, ItemStack newStack) {
+        return false;
     }
 
     @Override
@@ -28,6 +32,13 @@ public class ShowtimeStaffItem extends Item {
         return stack.get(ComponentTypes.BALL_CHARGES) < 4;
     }
 
+    public int getRechargeTimer(ItemStack stack){
+        return stack.get(ComponentTypes.RECHARGE_TIMER);
+    }
+
+    public void setRechargeTimer(ItemStack stack, int i){
+        stack.set(ComponentTypes.RECHARGE_TIMER, i);
+    }
     @Override
     public int getItemBarColor(ItemStack stack) {
         return MathHelper.hsvToRgb(1.0f, 0.5f, 1.0f);
@@ -43,9 +54,9 @@ public class ShowtimeStaffItem extends Item {
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot){
         int charges = stack.get(ComponentTypes.BALL_CHARGES);
         if(charges <= 3){
-            RECHARGE_TIMER--;
-            if(RECHARGE_TIMER <= 0){
-                RECHARGE_TIMER = 20;
+           this.setRechargeTimer(stack, this.getRechargeTimer(stack) - 1);
+            if(this.getRechargeTimer(stack) <= 0){
+                this.setRechargeTimer(stack, 20);
                 stack.set(ComponentTypes.BALL_CHARGES, charges + 1);
                 world.playSound(null, entity.getBlockPos(), Sounds.STAFF_RECHARGE, SoundCategory.PLAYERS, 1, 1);
             }
@@ -65,7 +76,7 @@ public class ShowtimeStaffItem extends Item {
             if(!user.isInCreativeMode()) {
                 stack.set(ComponentTypes.BALL_CHARGES, charges - 1);
             }
-            RECHARGE_TIMER = 30;
+            this.setRechargeTimer(stack, 30);
             user.incrementStat(Stats.USED.getOrCreateStat(this));
             return ActionResult.SUCCESS;
         }

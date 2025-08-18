@@ -16,4 +16,9 @@ public class ComponentTypes {
             Identifier.of(Showtime.MOD_ID, "charges"),
             ComponentType.<Integer>builder().codec(Codec.INT).build()
     );
+    public static final ComponentType<Integer> RECHARGE_TIMER = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(Showtime.MOD_ID, "recharge_timer"),
+            ComponentType.<Integer>builder().codec(Codec.INT).build()
+    );
 }
