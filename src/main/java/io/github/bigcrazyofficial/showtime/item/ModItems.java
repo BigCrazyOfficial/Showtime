@@ -27,7 +27,16 @@ public class ModItems {
         Registry.register(Registries.ITEM, itemKey, item);
         return item;
     }
-    public static final Item SHOWTIME_STAFF = register("showstopper", ShowtimeStaffItem::new,
+    public static final Item SHOWSTOPPER = register("showstopper", ShowtimeStaffItem::new,
+            new Item.Settings()
+                    .component(DataComponentTypes.USE_COOLDOWN, new UseCooldownComponent(0.25f))
+                    .component(ComponentTypes.BALL_CHARGES, 4)
+                    .component(ComponentTypes.RECHARGE_TIMER, 0)
+                    .component(DataComponentTypes.UNBREAKABLE, Unit.INSTANCE)
+                    .rarity(Rarity.EPIC)
+                    .sword(ToolMaterial.GOLD, 0.0f, -2.4f));
+
+    public static final Item GILDED_SHOWSTOPPER = register("gilded_showstopper", ShowtimeStaffItem::new,
             new Item.Settings()
                     .component(DataComponentTypes.USE_COOLDOWN, new UseCooldownComponent(0.25f))
                     .component(ComponentTypes.BALL_CHARGES, 4)
@@ -37,10 +46,9 @@ public class ModItems {
                     .sword(ToolMaterial.GOLD, 0.0f, -2.4f));
 
 
-
     public static final RegistryKey<ItemGroup> GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Showtime.MOD_ID, "item_group"));
     public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ModItems.SHOWTIME_STAFF))
+            .icon(() -> new ItemStack(ModItems.SHOWSTOPPER))
             .displayName(Text.translatable("itemGroup.showtime"))
             .build();
 

@@ -1,5 +1,7 @@
 {
   "item.showtime.showstopper": "Showstopper",
+  "item.showtime.gilded_showstopper": "Gilded Showstopper",
+
   "itemGroup.showtime": "Showtime",
 
   "sound.showtime.ball_detonate": "Ball detonates",
