@@ -4,8 +4,8 @@
 	"parent": "minecraft:item/handheld",
 	"texture_size": [64, 64],
 	"textures": {
-		"layer0": "showtime:item/showtime_staff",
-		"particle": "showtime:item/showtime_staff"
+		"layer0": "showtime:item/showstopper",
+		"particle": "showtime:item/showstopper"
 	},
 	"gui_light": "front",
 	"display": {

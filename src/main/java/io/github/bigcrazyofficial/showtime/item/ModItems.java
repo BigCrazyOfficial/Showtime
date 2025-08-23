@@ -27,7 +27,7 @@ public class ModItems {
         Registry.register(Registries.ITEM, itemKey, item);
         return item;
     }
-    public static final Item SHOWTIME_STAFF = register("showtime_staff", ShowtimeStaffItem::new,
+    public static final Item SHOWTIME_STAFF = register("showstopper", ShowtimeStaffItem::new,
             new Item.Settings()
                     .component(DataComponentTypes.USE_COOLDOWN, new UseCooldownComponent(0.25f))
                     .component(ComponentTypes.BALL_CHARGES, 4)
